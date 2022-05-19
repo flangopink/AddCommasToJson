@@ -34,6 +34,12 @@ if (args.Length > 0)
                 break;
             }
 
+            if (line.EndsWith(',') || (fileLines[i + 1].EndsWith("},") || fileLines[i + 1].EndsWith("],")))
+            {
+                Write(line);
+                continue;
+            }
+
             if (!line.EndsWith('{') && !line.EndsWith('[') && !IsValid(fileLines[i + 1]))
                 line += ",";
 
